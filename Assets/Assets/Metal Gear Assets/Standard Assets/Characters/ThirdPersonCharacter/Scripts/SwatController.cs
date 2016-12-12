@@ -28,20 +28,20 @@ public class SwatController : MonoBehaviour {
 		if (Input.GetKey ("w")) {
 			idle = false;
 			walking = true;
-			sprinting = false;
-			backward = false;
-			right = false;
-			left = false;
-			transform.Translate (Vector3.forward  * Time.deltaTime);
+//			sprinting = false;
+//			backward = false;
+//			right = false;
+//			left = false;
+			transform.Translate (Vector3.forward *2  * Time.deltaTime);
 
 			if (Input.GetKey (KeyCode.LeftShift)) {
 				idle = false;
 				sprinting = true;
 				walking = true;
-				backward = false;
-				right = false;
-				left = false;
-				transform.Translate (Vector3.forward * 2 * Time.deltaTime);
+//				backward = false;
+//				right = false;
+//				left = false;
+//				transform.Translate (Vector3.forward * 2 * Time.deltaTime);
 			}
 		}
 
@@ -49,50 +49,50 @@ public class SwatController : MonoBehaviour {
 		{
 			idle = false;
 			walking = true;
-			sprinting = false;
-			backward = false;
-			right = false;
-			left = false;
-			sprinting = false;
+//			sprinting = false;
+//			backward = false;
+//			right = false;
+//			left = false;
+//			sprinting = false;
 		}
 
 		if (Input.GetKeyUp("w"))
 		{
 			idle = true;
 			walking = false;
-			sprinting = false;
-			backward = false;
-			right = false;
-			left = false;
+//			sprinting = false;
+//			backward = false;
+//			right = false;
+//			left = false;
 		}
 
 		if (Input.GetKey ("s")) {
 			idle = false;
 			backward = true;
-			walking = false;
-			sprinting = false;
-			right = false;
-			left = false;
-			transform.Translate (Vector3.back  * Time.deltaTime);
+//			walking = false;
+//			sprinting = false;
+//			right = false;
+//			left = false;
+			transform.Translate (Vector3.back *2 * Time.deltaTime);
 		}
 
 		if (Input.GetKeyUp("s"))
 		{
 			idle = true;
 			backward = false;
-			walking = false;
-			sprinting = false;
-			right = false;
-			left = false;
+//			walking = false;
+//			sprinting = false;
+//			right = false;
+//			left = false;
 		}
 
 		if (Input.GetKey ("d")) {
 			idle = false;
 			right = true;
-			walking = false;
-			sprinting = false;
-			backward = false;
-			left = false;
+//			walking = false;
+//			sprinting = false;
+//			backward = false;
+//			left = false;
 			transform.Rotate (Vector3.up * 100 * Time.deltaTime);
 		}
 
@@ -100,19 +100,19 @@ public class SwatController : MonoBehaviour {
 		{
 			idle = true;
 			right = false;
-			walking = false;
-			sprinting = false;
-			backward = false;
-			left = false;
+//			walking = false;
+//			sprinting = false;
+//			backward = false;
+//			left = false;
 		}
 
 		if (Input.GetKey ("a")) {
 			idle = false;
 			left = true;
-			walking = false;
-			sprinting = false;
-			backward = false;
-			right = false;
+//			walking = false;
+//			sprinting = false;
+//			backward = false;
+//			right = false;
 			transform.Rotate (Vector3.up * -100 * Time.deltaTime);
 		}
 
@@ -120,10 +120,10 @@ public class SwatController : MonoBehaviour {
 		{
 			idle = true;
 			left = false;
-			walking = false;
-			sprinting = false;
-			backward = false;
-			right = false;
+//			walking = false;
+//			sprinting = false;
+//			backward = false;
+//			right = false;s	
 		}
 
 
