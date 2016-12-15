@@ -1,4 +1,4 @@
-In the ThirdPersonCharacter folder you'll find two ready-made character prefabs, which are used in the ThirdPersonCharacter sample scenes. These prefabs demonstrate how you can use the ThirdPersonCharacters scripts and animations we've included, including an AI-controlled variant which is able to walk towards a specified target, or follow a waypoint-based route.
+	In the ThirdPersonCharacter folder you'll find two ready-made character prefabs, which are used in the ThirdPersonCharacter sample scenes. These prefabs demonstrate how you can use the ThirdPersonCharacters scripts and animations we've included, including an AI-controlled variant which is able to walk towards a specified target, or follow a waypoint-based route.
 
 The simplest way to get started setting up your own character is to take our ThirdPersonCharacter and replace the art with your own model. To do so, make sure you've imported your own rigged model with a Humanoid avatar, then follow these steps:
 
