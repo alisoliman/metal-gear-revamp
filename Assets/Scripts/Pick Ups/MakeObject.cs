@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEditor;
 
-public class MakeWeaponObject 
+public class MakeObject 
 {
 	[MenuItem("Assets/Create/Weapon Object")]
 	public static void CreateWeapon()

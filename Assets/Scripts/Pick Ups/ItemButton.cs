@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 
-public class WeaponButton : MonoBehaviour {
+public class ItemButton : MonoBehaviour {
 
 	public PlayerPickUp playerPickUp;
 
@@ -11,7 +11,7 @@ public class WeaponButton : MonoBehaviour {
 
 	private Button button;
 
-	public int weaponID;
+	public int itemID;
 
 	// Use this for initialization
 	void Start () {
@@ -20,13 +20,13 @@ public class WeaponButton : MonoBehaviour {
 	}
 
 	void Update(){
-		button.interactable = playerPickUp.WeaponsList [weaponID].enabled;
+		button.interactable = playerPickUp.ItemsList [itemID].enabled;
 	}
 
 	void SetButton()
 	{
-		buttonName.text = playerPickUp.WeaponsList [weaponID].name;
-		description.text = playerPickUp.WeaponsList [weaponID].description;
+		buttonName.text = playerPickUp.ItemsList [itemID].name;
+		description.text = playerPickUp.ItemsList [itemID].description;
 	}
 
 	public void OnClick(){
