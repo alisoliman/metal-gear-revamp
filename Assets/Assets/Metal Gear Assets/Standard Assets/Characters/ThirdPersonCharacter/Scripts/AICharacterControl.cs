@@ -3,6 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
+{
 	[RequireComponent(typeof (NavMeshAgent))]
 	[RequireComponent(typeof (ThirdPersonCharacter))]
 	public class AICharacterControl : MonoBehaviour
@@ -51,7 +52,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			if (decTime) {
 				turn = true;
 				timer2 -= Time.deltaTime;
-				transform.Rotate (Vector3.up * 120 * Time.deltaTime);
+				transform.Rotate (Vector3.up * 118 * Time.deltaTime);
 				Debug.Log ("Kam mara");
 			}
 
@@ -69,7 +70,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 	private void followPath(){
 
-		if (agent.remainingDistance <= agent.stoppingDistance + 0.3) {
+		if (agent.remainingDistance <= agent.stoppingDistance + 0.25) {
 			walking = false;
 			timer -= Time.deltaTime;
 			turn = true;
