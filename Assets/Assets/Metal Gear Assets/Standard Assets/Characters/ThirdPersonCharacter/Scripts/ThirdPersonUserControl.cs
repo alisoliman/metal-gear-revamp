@@ -12,7 +12,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private Vector3 m_CamForward;             // The current forward direction of the camera
         private Vector3 m_Move;
         private bool m_Jump;                      // the world-relative desired move direction, calculated from the camForward and user input.
-        
+		public GameObject shot;
+		public Transform shotSpawn;
+		public float fireRate;
+		private float nextFire;
+
+
         private void Start()
         {
             // get the transform of the main camera
@@ -39,6 +44,12 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 m_Jump = CrossPlatformInputManager.GetButtonDown("Jump");
             }
+
+//			if (Input.GetButton("Fire1") && Time.time > nextFire)
+//			{
+//				nextFire = Time.time + fireRate;
+//				Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+//			}
         }
 
 
