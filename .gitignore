@@ -28,3 +28,18 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+Assets/Plugins/Pixelplacement.meta
+Assets/Plugins/Pixelplacement/iTween.meta
+Assets/Plugins/Pixelplacement/iTween/iTween.cs
+Assets/Plugins/Pixelplacement/iTween/iTween.cs.meta
+Assets/Plugins/Pixelplacement/iTween/ReadMe!.meta
+Assets/Plugins/Pixelplacement/iTween/ReadMe!/ReadMe!.txt
+Assets/Plugins/Pixelplacement/iTween/ReadMe!/ReadMe!.txt.meta
+Assets/Plugins/Pixelplacement/iTween/Sample/MoveSample.cs
+Assets/Plugins/Pixelplacement/iTween/Sample/MoveSample.cs.meta
+Assets/Plugins/Pixelplacement/iTween/Sample/RotateSample.cs
+Assets/Plugins/Pixelplacement/iTween/Sample/RotateSample.cs.meta
+Assets/Plugins/Pixelplacement/iTween/Sample/Sample.unity
+Assets/Plugins/Pixelplacement/iTween/Sample/Sample.unity.meta
+Assets/Plugins/Pixelplacement/iTween/Sample/SampleInfo.cs.meta
+Plugins.meta
