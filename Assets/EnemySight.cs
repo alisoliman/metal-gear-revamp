@@ -10,7 +10,7 @@ public class EnemySight : MonoBehaviour {
 	private Animator anim;
 	private GameObject player;
 	private Animator playerAnim;
-	private PlayerHealth playerHealth;
+	//private PlayerHealth playerHealth;
 
 	void Awake(){
 
@@ -19,7 +19,7 @@ public class EnemySight : MonoBehaviour {
 		anim = GetComponent<Animator> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		playerAnim = player.GetComponent<Animator> ();
-		playerHealth = player.GetComponent<PlayerHealth>();
+		//playerHealth = player.GetComponent<PlayerHealth>();
 
 	}
 
@@ -30,7 +30,7 @@ public class EnemySight : MonoBehaviour {
 //		}
 		if (playerInSight) {
 			Debug.Log ("BUSTEEEED!");
-			playerHealth.currentHealth = 0;
+			//playerHealth.currentHealth = 0;
 		}
 		
 	
