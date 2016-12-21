@@ -11,8 +11,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		public NavMeshAgent agent { get; private set; }             // the navmesh agent required for the path finding
 		public ThirdPersonCharacter character { get; private set; } // the character we are controlling
 		public Transform target;                                    // target to aim for
-		public Transform target2;
-		public Transform tmp;
 		private Animator anim;
 		private bool walking;
 		private bool turn;
@@ -31,7 +29,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 			anim = GetComponent<Animator> ();
 			agent.updateRotation = false;
 			agent.updatePosition = true;
-			currentPosition = transform.parent.position;
+			currentPosition = transform.position;
 			originalXPosition = transform.position.x;
 			Debug.Log (originalXPosition);
 			agent.SetDestination(target.position);
@@ -53,7 +51,6 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 				turn = true;
 				timer2 -= Time.deltaTime;
 				transform.Rotate (Vector3.up * 118 * Time.deltaTime);
-				Debug.Log ("Kam mara");
 			}
 
 			if (timer2 <= 0) {
@@ -70,7 +67,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 		}
 	private void followPath(){
 
-		if (agent.remainingDistance <= agent.stoppingDistance + 0.25) {
+		if (agent.remainingDistance <= agent.stoppingDistance + 0.21) {
 			walking = false;
 			timer -= Time.deltaTime;
 			turn = true;
