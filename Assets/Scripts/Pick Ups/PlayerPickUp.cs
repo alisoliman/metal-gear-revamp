@@ -34,7 +34,12 @@ public class PlayerPickUp : MonoBehaviour
 	public int currentItem = 0;
 
 	private ItemObject activatedItem;
-	// Use this for initialization
+
+	public GameObject audioObject;
+	public AudioSource audio;
+	public AudioClip suspense;
+	public AudioClip winning;
+
 	void Start ()
 	{
 		boss.SetActive (false);
@@ -43,6 +48,8 @@ public class PlayerPickUp : MonoBehaviour
 		gamePaused = false;
 		weaponText.text = WeaponsList [currentWeapon].weaponName;
 		itemText.text = ItemsList [currentItem].itemName;
+		audioObject = GameObject.FindGameObjectWithTag ("background");
+		audio = audioObject.GetComponent<AudioSource> ();
 	}
 
 
@@ -154,7 +161,24 @@ public class PlayerPickUp : MonoBehaviour
 		for (int i = 0; i < destroyItems.Length; i++) {
 			Destroy(destroyItems[i]);
 		}
+
 		boss.SetActive (true);
+
+		bossAudio ();
+	}
+
+	public void bossAudio(){
+	
+		audio.Stop ();
+		audio.clip = suspense;
+		audio.Play ();
+	}
+
+	public void winAudio(){
+
+		audio.Stop ();
+		audio.clip = winning;
+		audio.Play ();
 	}
 
 	// Pause Related Methods

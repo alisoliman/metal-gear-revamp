@@ -23,7 +23,7 @@ public class EnemyHealth : MonoBehaviour
 		character = GameObject.FindGameObjectWithTag ("BigBoss");
         currentHealth = startingHealth;
 		boss = GetComponentInChildren<Boss>();
-
+		player = GameObject.FindGameObjectWithTag ("Player");
     }
 
 
@@ -55,10 +55,13 @@ public class EnemyHealth : MonoBehaviour
         anim.SetTrigger ("dead");
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
-//		boss.setTarget (character.transform);
+
 		boss.enabled = false;
+		PlayerPickUp pick =  player.GetComponent<PlayerPickUp> ();
+		pick.winAudio ();
 
-
+		//Destroy(gameObject);
     }
+ }
 
 }
