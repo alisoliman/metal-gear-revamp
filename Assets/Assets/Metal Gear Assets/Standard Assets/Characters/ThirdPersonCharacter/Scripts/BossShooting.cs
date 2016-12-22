@@ -9,29 +9,30 @@ public class BossShooting : MonoBehaviour {
 	private SphereCollider col;
 	private Animator anim;
 	private GameObject player;
-	private Animator playerAnim;
-	//private PlayerHealth playerHealth;
+	private PlayerHealth playerHealth;
+	private BossGun BossGun;
 
 	void Awake(){
 
 		nav = GetComponent<NavMeshAgent> ();
-		col = GetComponent<SphereCollider> ();
 		anim = GetComponent<Animator> ();
+		BossGun = GetComponentInChildren<BossGun> ();
+		col = GetComponent<SphereCollider> ();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		playerAnim = player.GetComponent<Animator> ();
-		//playerHealth = player.GetComponent<PlayerHealth>();
+		playerHealth = player.GetComponent<PlayerHealth>();
 
 	}
 
 	void Update(){
 
-		//		if(playerHealth.currentHealth > 0){
-		//			Set gameOver
-		//		}
 		if (playerInSight) {
 			
+			anim.SetBool ("walking", false);
+			Debug.Log ("3etel hna");
+			BossGun.Shoot ();
+			Debug.Log ("shoot called");
 
-			//playerHealth.currentHealth = 0;
+
 		}
 
 
@@ -69,28 +70,28 @@ public class BossShooting : MonoBehaviour {
 		}
 	}
 
-	float CalculatePathLength(Vector3 targetPosition){
-
-		NavMeshPath path = new NavMeshPath ();
-		if (nav.enabled) {
-			nav.CalculatePath (targetPosition, path);
-		}
-		Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
-
-		allWayPoints [0] = transform.position;
-		allWayPoints [allWayPoints.Length - 1] = targetPosition;
-
-		for (int i = 0; i < path.corners.Length-1; i++) {
-			allWayPoints [i + 1] = path.corners [i];
-		}
-
-		float pathLength = 0f;
-
-		for (int i = 0; i < allWayPoints.Length - 1; i++) {
-			pathLength += Vector3.Distance (allWayPoints [i], allWayPoints [i + 1]);
-		}
-
-		return pathLength;
-	}
+//	float CalculatePathLength(Vector3 targetPosition){
+//
+//		NavMeshPath path = new NavMeshPath ();
+//		if (nav.enabled) {
+//			nav.CalculatePath (targetPosition, path);
+//		}
+//		Vector3[] allWayPoints = new Vector3[path.corners.Length + 2];
+//
+//		allWayPoints [0] = transform.position;
+//		allWayPoints [allWayPoints.Length - 1] = targetPosition;
+//
+//		for (int i = 0; i < path.corners.Length-1; i++) {
+//			allWayPoints [i + 1] = path.corners [i];
+//		}
+//
+//		float pathLength = 0f;
+//
+//		for (int i = 0; i < allWayPoints.Length - 1; i++) {
+//			pathLength += Vector3.Distance (allWayPoints [i], allWayPoints [i + 1]);
+//		}
+//
+//		return pathLength;
+//	}
 
 }

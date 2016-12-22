@@ -13,8 +13,6 @@ public class PlayerHealth : MonoBehaviour
     public AudioClip deathClip;
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
-
     Animator anim;
     AudioSource playerAudio;
     PlayerShooting playerShooting;
@@ -45,7 +43,7 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamage (int amount)
+	public void TakeDamage (int amount, Vector3 hitPoint)
     {
         damaged = true;
 
@@ -65,16 +63,12 @@ public class PlayerHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
-
         playerShooting.DisableEffects ();
-
         anim.SetTrigger ("Die");
-
         playerAudio.clip = deathClip;
         playerAudio.Play ();
-
-//        playerMovement.enabled = false;
         playerShooting.enabled = false;
+		anim.SetTrigger ("dead");
     }
 
 

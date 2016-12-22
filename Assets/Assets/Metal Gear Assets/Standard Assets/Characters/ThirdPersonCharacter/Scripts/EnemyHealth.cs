@@ -2,38 +2,34 @@
 
 public class EnemyHealth : MonoBehaviour
 {
-    public int startingHealth = 100;
-    public int currentHealth;
-    //public float sinkSpeed = 2.5f;
-    //public int scoreValue = 10;
+    public int startingHealth = 200;
+    private int currentHealth;
     public AudioClip deathClip;
-
-
-    Animator anim;
-    AudioSource enemyAudio;
-    //ParticleSystem hitParticles;
-    CapsuleCollider capsuleCollider;
+	private GameObject character;
+    public Animator anim;
+	Boss boss;
+	AudioSource enemyAudio;
+   	CapsuleCollider capsuleCollider;
     bool isDead;
-    //bool isSinking;
+	private BossGun BossGun;
 
 
     void Awake ()
     {
-       // anim = GetComponent <Animator> ();
-       	enemyAudio = GetComponent <AudioSource> ();
-      //  hitParticles = GetComponentInChildren <ParticleSystem> ();
+        anim = GetComponent <Animator> ();
+		BossGun = GetComponentInChildren<BossGun> ();
+		enemyAudio = GetComponent <AudioSource> ();
         capsuleCollider = GetComponent <CapsuleCollider> ();
-
+		character = GameObject.FindGameObjectWithTag ("BigBoss");
         currentHealth = startingHealth;
+		boss = GetComponentInChildren<Boss>();
+
     }
 
 
     void Update ()
     {
-//        if(isSinking)
-//        {
-//            transform.Translate (-Vector3.up * sinkSpeed * Time.deltaTime);
-//        }
+
     }
 
 
@@ -42,12 +38,7 @@ public class EnemyHealth : MonoBehaviour
         if(isDead)
             return;
 
-       // enemyAudio.Play ();
-
         currentHealth -= amount;
-            
-//        hitParticles.transform.position = hitPoint;
-//        hitParticles.Play();
 
         if(currentHealth <= 0)
         {
@@ -59,23 +50,15 @@ public class EnemyHealth : MonoBehaviour
     void Death ()
     {
         isDead = true;
-
+		BossGun.DisableEffects ();
         capsuleCollider.isTrigger = true;
-
-       // anim.SetTrigger ("Dead");
-
+        anim.SetTrigger ("dead");
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
-		//Destroy(gameObject);
+//		boss.setTarget (character.transform);
+		boss.enabled = false;
+
+
     }
 
-
-//    public void StartSinking ()
-//    {
-//        GetComponent <NavMeshAgent> ().enabled = false;
-//        GetComponent <Rigidbody> ().isKinematic = true;
-//        isSinking = true;
-//        //ScoreManager.score += scoreValue;
-//        Destroy (gameObject, 2f);
-//    }
 }
