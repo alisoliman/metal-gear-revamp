@@ -30,7 +30,7 @@ public class WeaponButton : MonoBehaviour {
 	}
 
 	public void OnClick(){
-
-		// TO be done
+		playerPickUp.currentWeapon = weaponID;
+		playerPickUp.CloseWeaponsPanel ();
 	}
 }
