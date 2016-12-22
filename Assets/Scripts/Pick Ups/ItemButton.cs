@@ -32,5 +32,8 @@ public class ItemButton : MonoBehaviour {
 	public void OnClick(){
 
 		// TO be done
+		playerPickUp.currentItem = itemID;
+		playerPickUp.CloseItemsPanel ();
+		Debug.Log (playerPickUp.currentItem);
 	}
 }
