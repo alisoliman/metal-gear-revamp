@@ -11,6 +11,10 @@ public class PlayerPickUp : MonoBehaviour
 	public GameObject itemPanel;
 	public GameObject pausePanel;
 	public GameObject winPanel;
+	public GameObject finalWinPanel;
+
+	public GameObject boss;
+	private EnemyHealth bossHealth;
 
 	private PlayerHealth playerHealth;
 
@@ -33,6 +37,8 @@ public class PlayerPickUp : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		boss.SetActive (false);
+		bossHealth = boss.GetComponent<EnemyHealth> ();
 		playerHealth = GetComponent<PlayerHealth> ();
 		gamePaused = false;
 		weaponText.text = WeaponsList [currentWeapon].weaponName;
@@ -76,6 +82,10 @@ public class PlayerPickUp : MonoBehaviour
 				Time.timeScale = 0;
 				gamePaused = true;
 			}
+		}
+		if (bossHealth.currentHealth < 1) {
+			finalWinPanel.SetActive (true);
+			Time.timeScale = 0;
 		}
 	}
 
@@ -144,6 +154,7 @@ public class PlayerPickUp : MonoBehaviour
 		for (int i = 0; i < destroyItems.Length; i++) {
 			Destroy(destroyItems[i]);
 		}
+		boss.SetActive (true);
 	}
 
 	// Pause Related Methods

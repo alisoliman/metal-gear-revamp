@@ -3,7 +3,7 @@
 public class EnemyHealth : MonoBehaviour
 {
     public int startingHealth = 200;
-    private int currentHealth;
+	public int currentHealth;
     public AudioClip deathClip;
 	private GameObject character;
     public Animator anim;
