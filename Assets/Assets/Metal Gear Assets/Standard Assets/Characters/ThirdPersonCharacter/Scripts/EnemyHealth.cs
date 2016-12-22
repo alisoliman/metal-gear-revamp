@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     //public float sinkSpeed = 2.5f;
     //public int scoreValue = 10;
     public AudioClip deathClip;
-
+	public GameObject player;
 
     Animator anim;
     AudioSource enemyAudio;
@@ -25,6 +25,7 @@ public class EnemyHealth : MonoBehaviour
         capsuleCollider = GetComponent <CapsuleCollider> ();
 
         currentHealth = startingHealth;
+		player = GameObject.FindGameObjectWithTag ("Player");
     }
 
 
@@ -66,6 +67,9 @@ public class EnemyHealth : MonoBehaviour
 
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
+		PlayerPickUp pick =  player.GetComponent<PlayerPickUp> ();
+		pick.winAudio ();
+
 		//Destroy(gameObject);
     }
 
