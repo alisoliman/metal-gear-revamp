@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
    	CapsuleCollider capsuleCollider;
     bool isDead;
 	private BossGun BossGun;
-
+	public GameObject player;
 
     void Awake ()
     {
@@ -63,5 +63,4 @@ public class EnemyHealth : MonoBehaviour
 		//Destroy(gameObject);
     }
  }
-
-}
+	
