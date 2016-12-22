@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
@@ -9,8 +10,11 @@ public class PlayerPickUp : MonoBehaviour
 	public GameObject weaponPanel;
 	public GameObject itemPanel;
 	public GameObject pausePanel;
+	public GameObject winPanel;
 
 	public GameObject CardBoard;
+
+	public GameObject [] destroyItems;
 
 	private bool gamePaused;
 
@@ -114,7 +118,20 @@ public class PlayerPickUp : MonoBehaviour
 					ItemsList [i].enabled = true;
 				}
 			}
+			if (collider.gameObject.name == "WinKey") {
+				StartCoroutine (WinGame ());
+			}
+
 			collider.gameObject.SetActive (false);
+		}
+	}
+
+	IEnumerator WinGame() {
+		winPanel.SetActive (true);
+		yield return new WaitForSeconds(5);
+		winPanel.SetActive (false);
+		for (int i = 0; i < destroyItems.Length; i++) {
+			Destroy(destroyItems[i]);
 		}
 	}
 

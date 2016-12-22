@@ -31,7 +31,7 @@ public class EnemySight : MonoBehaviour {
 //		}
 		if (playerInSight) {
 			Debug.Log ("BUSTEEEED!");
-			GameOver ();
+//			GameOver ();
 			//playerHealth.currentHealth = 0;
 		}
 		
