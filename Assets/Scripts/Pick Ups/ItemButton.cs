@@ -1,12 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ItemButton : MonoBehaviour {
+public class ItemButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler {
 
 	public PlayerPickUp playerPickUp;
 	public AudioClip hoverButtonClip;
-
+	public AudioClip chooseButtonClip;
 	private AudioSource audioSource;
 
 	public Text buttonName;
@@ -28,9 +29,18 @@ public class ItemButton : MonoBehaviour {
 	}
 
 	void OnMouseEnter() {
-		audioSource.PlayOneShot(hoverButtonClip);
-		Debug.Log ("here");
+		
+//		Debug.Log ("here");
 	}
+
+	public void OnPointerEnter( PointerEventData ped ) {
+		audioSource.PlayOneShot(hoverButtonClip);
+	}
+
+	public void OnPointerDown( PointerEventData ped ) {
+//		audioSource.PlayOneShot(chooseButtonClip);
+		audioSource.Play();
+	}    
 
 	void SetButton()
 	{

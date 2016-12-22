@@ -1,14 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class WeaponButton : MonoBehaviour {
+public class WeaponButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler  {
 
 	public PlayerPickUp playerPickUp;
 
 	public Text buttonName;
 	public Text description;
-
+	public AudioClip hoverButtonClip;
+	public AudioClip chooseButtonClip;
+	private AudioSource audioSource;
 	private Button button;
 
 	public int weaponID;
@@ -17,6 +20,7 @@ public class WeaponButton : MonoBehaviour {
 	void Start () {
 		button = GetComponent<Button> ();
 		SetButton ();
+		audioSource = GetComponent<AudioSource> ();
 	}
 
 	void Update(){
@@ -33,4 +37,13 @@ public class WeaponButton : MonoBehaviour {
 		playerPickUp.currentWeapon = weaponID;
 		playerPickUp.CloseWeaponsPanel ();
 	}
+
+	public void OnPointerEnter( PointerEventData ped ) {
+		audioSource.PlayOneShot(hoverButtonClip);
+	}
+
+	public void OnPointerDown( PointerEventData ped ) {
+		audioSource.PlayOneShot(chooseButtonClip);
+		//		SoundManager.Play("MouseClickButton");
+	}    
 }
