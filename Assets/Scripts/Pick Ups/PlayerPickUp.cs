@@ -12,6 +12,8 @@ public class PlayerPickUp : MonoBehaviour
 	public GameObject pausePanel;
 	public GameObject winPanel;
 
+	private PlayerHealth playerHealth;
+
 	public GameObject CardBoard;
 
 	public GameObject [] destroyItems;
@@ -31,6 +33,7 @@ public class PlayerPickUp : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		playerHealth = GetComponent<PlayerHealth> ();
 		gamePaused = false;
 		weaponText.text = WeaponsList [currentWeapon].weaponName;
 		itemText.text = ItemsList [currentItem].itemName;
@@ -53,6 +56,14 @@ public class PlayerPickUp : MonoBehaviour
 				this.gameObject.SetActive (false);
 				CardBoard.transform.position = playerPosition;
 				CardBoard.SetActive (true);
+			}
+			if (activatedItem.itemName == "First Aid") {
+				if (playerHealth.currentHealth < 40) {
+					playerHealth.currentHealth += 60;
+				} else {
+					playerHealth.currentHealth = 100;
+				}
+				activatedItem.enabled = false;
 			}
 		}
 		if (Input.GetKeyDown (KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) {
@@ -148,6 +159,7 @@ public class PlayerPickUp : MonoBehaviour
 	}
 
 	public void QuitClicked(){
-		
+		Time.timeScale = 1;
+		SceneManager.LoadScene ("Intro");
 	}
 }
