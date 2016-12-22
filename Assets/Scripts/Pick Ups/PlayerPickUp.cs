@@ -6,12 +6,16 @@ public class PlayerPickUp : MonoBehaviour {
 	public GameObject weaponPanel;
 	public GameObject itemPanel;
 
+	public GameObject CardBoard;
+	public bool cardboardActivated;
+
 
 	public WeaponObject [] WeaponsList;
 	public int currentWeapon = 0;
 	public ItemObject [] ItemsList;
 	public int currentItem = 0;
 
+	private ItemObject activatedItem;
 	// Use this for initialization
 	void Start () {
 	}
@@ -23,6 +27,12 @@ public class PlayerPickUp : MonoBehaviour {
 		}
 		if (Input.GetKeyDown(KeyCode.R)){
 			OpenItemsPanel();
+		}
+		if (Input.GetKeyDown(KeyCode.LeftAlt) || Input.GetKeyDown(KeyCode.RightAlt)){
+			activatedItem = ItemsList[currentItem];
+			if (activatedItem.itemName == "Cardboard"){
+				this.gameObject.SetActive(false);
+			}
 		}
 	}
 		

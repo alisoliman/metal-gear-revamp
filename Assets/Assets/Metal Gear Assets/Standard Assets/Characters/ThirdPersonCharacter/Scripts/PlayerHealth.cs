@@ -53,7 +53,7 @@ public class PlayerHealth : MonoBehaviour
 
         healthSlider.value = currentHealth;
 
-        //playerAudio.Play ();
+        playerAudio.Play ();
 
         if(currentHealth <= 0 && !isDead)
         {
@@ -68,7 +68,7 @@ public class PlayerHealth : MonoBehaviour
 
         playerShooting.DisableEffects ();
 
-        //anim.SetTrigger ("Die");
+        anim.SetTrigger ("Die");
 
         playerAudio.clip = deathClip;
         playerAudio.Play ();
@@ -78,8 +78,8 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-//    public void RestartLevel ()
-//    {
-//        SceneManager.LoadScene (0);
-//    }
+    public void RestartLevel ()
+    {
+        SceneManager.LoadScene (0);
+    }
 }
