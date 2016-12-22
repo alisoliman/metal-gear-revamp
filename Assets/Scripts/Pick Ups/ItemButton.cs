@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ItemButton : MonoBehaviour {
+public class ItemButton : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler {
 
 	public PlayerPickUp playerPickUp;
+	public AudioClip hoverButtonClip;
+	public AudioClip chooseButtonClip;
+	private AudioSource audioSource;
 
 	public Text buttonName;
 	public Text description;
@@ -16,12 +20,27 @@ public class ItemButton : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		button = GetComponent<Button> ();
+		audioSource = GetComponent<AudioSource> ();
 		SetButton ();
 	}
 
 	void Update(){
 		button.interactable = playerPickUp.ItemsList [itemID].enabled;
 	}
+
+	void OnMouseEnter() {
+		
+//		Debug.Log ("here");
+	}
+
+	public void OnPointerEnter( PointerEventData ped ) {
+		audioSource.PlayOneShot(hoverButtonClip);
+	}
+
+	public void OnPointerDown( PointerEventData ped ) {
+//		audioSource.PlayOneShot(chooseButtonClip);
+		audioSource.Play();
+	}    
 
 	void SetButton()
 	{
@@ -30,10 +49,7 @@ public class ItemButton : MonoBehaviour {
 	}
 
 	public void OnClick(){
-
-		// TO be done
 		playerPickUp.currentItem = itemID;
 		playerPickUp.CloseItemsPanel ();
-		Debug.Log (playerPickUp.currentItem);
 	}
 }
