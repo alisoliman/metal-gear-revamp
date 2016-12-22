@@ -5,6 +5,9 @@ using UnityEngine.UI;
 public class ItemButton : MonoBehaviour {
 
 	public PlayerPickUp playerPickUp;
+	public AudioClip hoverButtonClip;
+
+	private AudioSource audioSource;
 
 	public Text buttonName;
 	public Text description;
@@ -16,11 +19,17 @@ public class ItemButton : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		button = GetComponent<Button> ();
+		audioSource = GetComponent<AudioSource> ();
 		SetButton ();
 	}
 
 	void Update(){
 		button.interactable = playerPickUp.ItemsList [itemID].enabled;
+	}
+
+	void OnMouseEnter() {
+		audioSource.PlayOneShot(hoverButtonClip);
+		Debug.Log ("here");
 	}
 
 	void SetButton()
@@ -32,6 +41,5 @@ public class ItemButton : MonoBehaviour {
 	public void OnClick(){
 		playerPickUp.currentItem = itemID;
 		playerPickUp.CloseItemsPanel ();
-		Debug.Log (playerPickUp.currentItem);
 	}
 }

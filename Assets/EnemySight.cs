@@ -7,6 +7,7 @@ public class EnemySight : MonoBehaviour {
 	public bool playerInSight;
 	private NavMeshAgent nav;
 	private SphereCollider col;
+	public GameObject GameOverPanel;
 	private Animator anim;
 	private GameObject player;
 	private Animator playerAnim;
@@ -30,10 +31,15 @@ public class EnemySight : MonoBehaviour {
 //		}
 		if (playerInSight) {
 			Debug.Log ("BUSTEEEED!");
+			GameOver ();
 			//playerHealth.currentHealth = 0;
 		}
 		
 	
+	}
+
+	void GameOver(){
+		GameOverPanel.SetActive (true);
 	}
 
 	void OnTriggerStay(Collider other){
